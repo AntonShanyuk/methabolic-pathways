@@ -17,6 +17,15 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['to-string-loader', 'css-loader']
+            },
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true
+                    }
+                }]
             }
         ]
     },

@@ -3,15 +3,15 @@ import 'reflect-metadata';
 
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MainComponent }  from './components/main.component';
+import { AppComponent }  from './components/app/app.component';
 
 @NgModule({
   imports: [
     BrowserModule
   ],
   declarations: [
-    MainComponent
+    AppComponent
   ],
-  bootstrap: [ MainComponent ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
