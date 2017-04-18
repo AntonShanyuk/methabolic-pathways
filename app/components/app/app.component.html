@@ -7,14 +7,21 @@
     </div>
     <div *ngIf="map" [class.green]="greenStyle">
         <div class="fixed-top-right">
+            <h4>Colors:</h4>
             <div class="color-switch">
                 <button type="button" class="btn btn-default" (click)="greenStyle=false;" [disabled]="!greenStyle">Default</button>
                 <button type="button" class="btn btn-default btn-green" (click)="greenStyle=true;" [disabled]="greenStyle">Green</button>
             </div>
+            <div>
+                <h4>Nodes:</h4>
+                <div *ngFor="let nodeType of nodeTypes">
+                    <div>{{nodeType.name}}: {{nodeType.count}}</div>
+                </div>
+            </div>
             <div *ngIf="selectedPath">
-                <label>Selected path:</label>
-                <div>From: {{selectedPath.fromNode.node_type}} {{selectedPath.fromNode.node_id}}</div>
-                <div>To: {{selectedPath.toNode.node_type}} {{selectedPath.toNode.node_id}}</div>
+                <h4>Path:</h4>
+                <div>From: {{selectedPath.fromNode.node_type}} {{selectedPath.fromNode.name || selectedPath.fromNode.node_id}}</div>
+                <div>To: {{selectedPath.toNode.node_type}} {{selectedPath.toNode.name || selectedPath.toNode.node_id}}</div>
             </div>
         </div>
         <pathway-map [map]="map" (pathSelected)="selectedPath = $event;"></pathway-map>
