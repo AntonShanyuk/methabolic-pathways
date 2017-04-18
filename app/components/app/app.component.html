@@ -5,7 +5,13 @@
             <input type="file" (change)="onFileSelected($event)">
         </div>
     </div>
-    <div *ngIf="map">
+    <div *ngIf="map" [class.green]="greenStyle">
+        <div class="fixed-top-right">
+            <div class="color-switch">
+                <button type="button" class="btn btn-default" (click)="greenStyle=false;" [disabled]="!greenStyle">Default</button>
+                <button type="button" class="btn btn-default btn-green" (click)="greenStyle=true;" [disabled]="greenStyle">Green</button>
+            </div>
+        </div>
         <pathway-map [map]="map"></pathway-map>
     </div>
 </div>

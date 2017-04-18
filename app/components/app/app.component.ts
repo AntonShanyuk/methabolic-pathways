@@ -12,6 +12,7 @@ const template: string = String(html);
 })
 export class AppComponent {
   map: any = null;
+  greenStyle = false;
 
   onFileSelected(event: Event) {
     const fileEventTarget: any = event.target;
