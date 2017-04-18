@@ -25,7 +25,7 @@
     "@angular/platform-browser": "^4.0.2",
     "@angular/platform-browser-dynamic": "^4.0.2",
     "es6-shim": "^0.35.3",
-    "escher-vis": "github:zakandrewking/escher",
+    "escher-vis": "^1.6.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.3.0",
     "zone.js": "^0.8.5"

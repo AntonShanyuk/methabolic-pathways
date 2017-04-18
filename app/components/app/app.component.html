@@ -1,8 +1,11 @@
 <div>
-    <div class="upload-wrapper">
+    <div *ngIf="!map" class="upload-wrapper">
         <div class="file-upload">
             <button type="button">Please select JSON file</button>
             <input type="file" (change)="onFileSelected($event)">
         </div>
+    </div>
+    <div *ngIf="map">
+        <pathway-map [map]="map"></pathway-map>
     </div>
 </div>
