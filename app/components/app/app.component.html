@@ -18,6 +18,10 @@
                     <div>{{nodeType.name}}: {{nodeType.count}}</div>
                 </div>
             </div>
+            <div>
+                <h4>Genes that are part of more than one reaction:</h4>
+                <div>{{genes.join(', ')}}</div>
+            </div>
             <div *ngIf="selectedPath">
                 <h4>Path:</h4>
                 <div>From: {{selectedPath.fromNode.node_type}} {{selectedPath.fromNode.name || selectedPath.fromNode.node_id}}</div>
