@@ -15,18 +15,29 @@ export class AppComponent {
   greenStyle = false;
   nodeTypes: { name: String, count: Number }[] = [];
   genes: string[] = [];
+  errorMessage:string = null;
 
   onFileSelected(event: Event) {
     const fileEventTarget: any = event.target;
     var reader = new FileReader();
     reader.onload = loadEvent => {
       const loadeEventTarget: any = loadEvent.target;
-      this.map = JSON.parse(loadeEventTarget.result);
+      try {
+       this.map = JSON.parse(loadeEventTarget.result);
+       this.errorMessage = null;
+      } catch (error) {
+        this.errorMessage = `Failed to parse JSON-file: ${error.message}`;
+      }
 
       this._processNodeTypes();
       this._processGenes();
     }
     reader.readAsText(fileEventTarget.files[0]);
+  }
+
+  onBuildError(error:Error) {
+    this.map = null;
+    this.errorMessage = `Failed to build map: ${error.message}`;
   }
 
   _processNodeTypes() {

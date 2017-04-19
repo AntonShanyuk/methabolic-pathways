@@ -28,10 +28,15 @@ export class PathwayMapComponent implements AfterViewInit {
     @Input('map')
     set map(value: any) {
         this._map = value;
-        escher.Builder(value, null, null, escher.libs.d3_select('#static_map'), this.options);
+        try {
+            escher.Builder(value, null, null, escher.libs.d3_select('#static_map'), this.options);
+        } catch (error) {
+            this.buildError.emit(error);
+        }
     }
 
     @Output('pathSelected') pathSelected = new EventEmitter<any>();
+    @Output('buildError') buildError = new EventEmitter<any>();
 
     ngAfterViewInit() {
         const segmentIdRegex = /s(\d+)/;

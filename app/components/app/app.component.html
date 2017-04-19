@@ -4,6 +4,9 @@
             <button type="button">Please select JSON file</button>
             <input type="file" (change)="onFileSelected($event)">
         </div>
+        <div *ngIf="errorMessage" class="error">
+            {{errorMessage}}
+        </div>
     </div>
     <div *ngIf="map" [class.green]="greenStyle">
         <div class="fixed-top-right">
@@ -28,6 +31,6 @@
                 <div>To: {{selectedPath.toNode.node_type}} {{selectedPath.toNode.name || selectedPath.toNode.node_id}}</div>
             </div>
         </div>
-        <pathway-map [map]="map" (pathSelected)="selectedPath = $event;"></pathway-map>
+        <pathway-map [map]="map" (pathSelected)="selectedPath = $event;" (buildError)="onBuildError($event)"></pathway-map>
     </div>
 </div>
